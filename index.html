@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+img{
+  width: 300px;
+  height: 300px;
+}
+result{
+  width: 100px;
+  height: 100px;
+}
+img:hover, button:hover{
+  cursor: pointer
+}
+button{
+	width: 100px;
+	background-color: transparent;
+	color: blue;
+	border: 2px solid blue;
+}
+#result{
+	width: 400px;
+	margin: 100px auto;
+}
+
+	</style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script>
+function LazyLoad () {
+
+
+$(document).on("click", "button", function() {
+	  var imgUrl = $(this).data('src');
+  $('#result').html("<img src='" + imgUrl + "' alt='dogs'/>");
+
+  $(document).on('click', "img", function(){  
+  		$("img").detach();
+  })
+});
+}
+</script>
+</head>
+<body>
+
+<div id="pictures">
+<button data-src="./img/dog-ball.jpg" onclick='LazyLoad(this)'> Click </button>
+
+<button data-src="./img/dog-2.jpg"onclick='LazyLoad(this)'> Click </button>
+
+<button data-src="./img/dog-3.jpg" onclick='LazyLoad(this)'> Click </button>
+
+<button data-src="./img/dog-4.jpg"onclick='LazyLoad(this)'> Click</button>
+
+<div id="result"></div>
+	
+
+
+</body>
+</html>
